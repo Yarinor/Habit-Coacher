@@ -19,14 +19,15 @@ module.exports = {
       minLength: 6,
       required: true
     },
-    toJSON: function () {
+    toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
       return obj;
     }
-  }, beforeCreate: (user, cb) => {
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(user, password, salt, (err, hash) => {
+  },
+  beforeCreate: function(user, cb) {
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(user.password, salt, function(err, hash) {
         if (err) {
           console.log(err);
           cb(err);
@@ -36,7 +37,6 @@ module.exports = {
         }
       });
     });
-
   },
   connection: 'mongodb'
 };
