@@ -19,6 +19,19 @@ module.exports = {
       minLength: 6,
       required: true
     },
+    confirmPassword: {
+      type: 'string',
+      minLength: 6,
+      required: true
+    },
+    firstname:{
+      type:'string',
+      required: true
+    },
+    lastname: {
+      type: 'string',
+      required: true
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
